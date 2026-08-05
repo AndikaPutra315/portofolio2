@@ -1,33 +1,455 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aji Dwi Andika</title>
+    <title>Aji Dwi Andika Putra - Portfolio</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            500: '#06b6d4', // cyan-500
+                            600: '#0891b2', // cyan-600
+                        },
+                        dark: {
+                            bg: '#0f172a', // slate-900
+                            card: '#1e293b', // slate-800
+                        },
+                        light: {
+                            bg: '#f8fafc', // slate-50
+                            card: '#ffffff', // white
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        body {
-            font-family: sans-serif;
-            background-color: #0f172a;
-            color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .box {
-            text-align: center;
-            padding: 30px;
-            border: 1px solid #334155;
-            border-radius: 12px;
-            background-color: #1e293b;
-        }
+        html { scroll-behavior: smooth; }
+        .transition-theme { transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
     </style>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body>
-    <div class="box">
-        <h1>Aji Dwi Andika</h1>
-        <p>Portofolio dalam tahap pengembangan.</p>
-    </div>
+<body class="bg-light-bg text-slate-900 dark:bg-dark-bg dark:text-slate-50 font-sans transition-theme antialiased">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-light-card/90 dark:bg-dark-bg/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-theme">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-xl font-bold tracking-tight">Andika Putra<span class="text-primary-500">.</span></a>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-slate-600 hover:text-primary-500 dark:text-slate-300 dark:hover:text-primary-500 font-medium transition-colors">About</a>
+                    <a href="#skills" class="text-slate-600 hover:text-primary-500 dark:text-slate-300 dark:hover:text-primary-500 font-medium transition-colors">Skills</a>
+                    <a href="#projects" class="text-slate-600 hover:text-primary-500 dark:text-slate-300 dark:hover:text-primary-500 font-medium transition-colors">Projects</a>
+                    <a href="#experience" class="text-slate-600 hover:text-primary-500 dark:text-slate-300 dark:hover:text-primary-500 font-medium transition-colors">Experience & Education</a>
+                    <a href="#contact" class="text-slate-600 hover:text-primary-500 dark:text-slate-300 dark:hover:text-primary-500 font-medium transition-colors">Contact</a>
+                </div>
+                <!-- Controls -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" aria-label="Toggle Dark Mode">
+                        <i data-lucide="sun" class="w-5 h-5 hidden dark:block text-slate-300"></i>
+                        <i data-lucide="moon" class="w-5 h-5 block dark:hidden text-slate-600"></i>
+                    </button>
+                    <a href="#contact" class="bg-primary-500 hover:bg-primary-600 text-white px-5 py-2 rounded-md font-medium transition-colors shadow-sm">Hubungi Saya</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center space-x-4">
+                    <button id="theme-toggle-mobile" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" aria-label="Toggle Dark Mode">
+                        <i data-lucide="sun" class="w-5 h-5 hidden dark:block text-slate-300"></i>
+                        <i data-lucide="moon" class="w-5 h-5 block dark:hidden text-slate-600"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="p-2 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6 menu-icon"></i>
+                        <i data-lucide="x" class="w-6 h-6 close-icon hidden"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-light-card dark:bg-dark-card border-b border-slate-200 dark:border-slate-800 transition-theme absolute w-full">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 shadow-lg">
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-primary-500 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-primary-500 dark:hover:bg-slate-800">About</a>
+                <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-primary-500 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-primary-500 dark:hover:bg-slate-800">Skills</a>
+                <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-primary-500 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-primary-500 dark:hover:bg-slate-800">Projects</a>
+                <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-primary-500 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-primary-500 dark:hover:bg-slate-800">Experience & Education</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-primary-500 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-primary-500 dark:hover:bg-slate-800">Contact</a>
+                <a href="#contact" class="block px-3 py-2 mt-4 text-center rounded-md font-medium bg-primary-500 text-white hover:bg-primary-600 mx-2">Hubungi Saya</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-16">
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-[90vh] flex items-center py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
+                    
+                    <!-- Left Column: Text Content -->
+                    <div class="md:col-span-8 space-y-6 text-left order-2 md:order-1">
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
+                            Aji Dwi <span class="text-primary-500">Andika Putra</span>
+                        </h1>
+                        <h2 class="text-xl sm:text-2xl lg:text-3xl font-semibold text-slate-600 dark:text-slate-400 mb-6">
+                            Frontend Developer | Software Engineer | Hardware & IoT Specialist
+                        </h2>
+                        <p class="text-lg sm:text-xl text-slate-700 dark:text-slate-300 font-medium italic mb-6 border-l-4 border-primary-500 pl-4">
+                            "Bridging Code, IoT, and Physical Hardware"
+                        </p>
+                        <p class="text-base sm:text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed max-w-2xl">
+                            Menggabungkan keahlian pengembangan aplikasi modern (Flutter & Laravel) dengan kemampuan perbaikan perangkat keras dan integrasi sistem IoT.
+                        </p>
+                        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 pt-2">
+                            <a href="#projects" class="inline-flex justify-center items-center px-8 py-3.5 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary-500 hover:bg-primary-600 transition-all hover:scale-105">
+                                Lihat Proyek
+                                <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                            </a>
+                            <a href="#contact" class="inline-flex justify-center items-center px-8 py-3.5 border-2 border-slate-300 dark:border-slate-700 text-base font-medium rounded-md text-slate-700 dark:text-slate-300 bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 transition-all hover:scale-105">
+                                Hubungi Saya
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Profile Photo Container -->
+                    <div class="md:col-span-4 flex justify-center md:justify-end order-1 md:order-2">
+                        <div class="relative">
+                            <img 
+                                src="profile2.png" 
+                                alt="Aji Dwi Andika Putra" 
+                                class="rounded-full w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 aspect-square object-cover shadow-2xl border-4 border-primary-500/30 dark:border-primary-500/40 transition-theme"
+                            />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 bg-light-card dark:bg-dark-card border-y border-slate-200 dark:border-slate-800 transition-theme">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold inline-block relative">
+                        Tentang Saya
+                        <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-12 h-1 bg-primary-500 rounded"></div>
+                    </h2>
+                </div>
+                <div class="max-w-3xl mx-auto">
+                    <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed text-center">
+                        Saya adalah Frontend Developer dan Software Engineer yang berfokus pada pengembangan aplikasi web dan mobile menggunakan Flutter dan Laravel. Selain dunia perangkat lunak, saya memiliki keahlian teknis dalam perbaikan perangkat keras (laptop/HP) serta perakitan sistem IoT (ESP32/Arduino). Kombinasi ini membuat saya terbiasa memecahkan masalah teknis secara menyeluruh, baik dari sisi kode maupun fisik.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold inline-block relative">
+                        Skills & Tech Stack
+                        <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-12 h-1 bg-primary-500 rounded"></div>
+                    </h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div class="bg-light-card dark:bg-dark-card rounded-xl p-8 shadow-sm border border-slate-200 dark:border-slate-800 hover:shadow-md hover:-translate-y-1 transition-all">
+                        <div class="w-12 h-12 bg-primary-500/10 rounded-lg flex items-center justify-center mb-6 border border-primary-500/20">
+                            <i data-lucide="code" class="w-6 h-6 text-primary-500"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Software & Web Development</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center text-slate-600 dark:text-slate-400"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary-500 mr-3 shrink-0"></i> Flutter</li>
+                            <li class="flex items-center text-slate-600 dark:text-slate-400"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary-500 mr-3 shrink-0"></i> Laravel</li>
+                            <li class="flex items-center text-slate-600 dark:text-slate-400"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary-500 mr-3 shrink-0"></i> HTML5/CSS3</li>
+                            <li class="flex items-center text-slate-600 dark:text-slate-400"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary-500 mr-3 shrink-0"></i> JavaScript</li>
+                            <li class="flex items-center text-slate-600 dark:text-slate-400"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary-500 mr-3 shrink-0"></i> Tailwind CSS</li>
+                            <li class="flex items-center text-slate-600 dark:text-slate-400"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary-500 mr-3 shrink-0"></i> REST API</li>
+                        </ul>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="bg-light-card dark:bg-dark-card rounded-xl p-8 shadow-sm border border-slate-200 dark:border-slate-800 hover:shadow-md hover:-translate-y-1 transition-all">
+                        <div class="w-12 h-12 bg-primary-500/10 rounded-lg flex items-center justify-center mb-6 border border-primary-500/20">
+                            <i data-lucide="wrench" class="w-6 h-6 text-primary-500"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Hardware Repair & Maintenance</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start text-slate-600 dark:text-slate-400"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary-500 mr-3 mt-0.5 shrink-0"></i> <span>Laptop Hardware Diagnostics & Repair</span></li>
+                            <li class="flex items-start text-slate-600 dark:text-slate-400"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary-500 mr-3 mt-0.5 shrink-0"></i> <span>Smartphone Repair</span></li>
+                            <li class="flex items-start text-slate-600 dark:text-slate-400"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary-500 mr-3 mt-0.5 shrink-0"></i> <span>Circuit & Electrical Troubleshooting</span></li>
+                        </ul>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="bg-light-card dark:bg-dark-card rounded-xl p-8 shadow-sm border border-slate-200 dark:border-slate-800 hover:shadow-md hover:-translate-y-1 transition-all">
+                        <div class="w-12 h-12 bg-primary-500/10 rounded-lg flex items-center justify-center mb-6 border border-primary-500/20">
+                            <i data-lucide="cpu" class="w-6 h-6 text-primary-500"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">IoT & Embedded Systems</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center text-slate-600 dark:text-slate-400"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary-500 mr-3 shrink-0"></i> ESP32 Microcontrollers</li>
+                            <li class="flex items-center text-slate-600 dark:text-slate-400"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary-500 mr-3 shrink-0"></i> Arduino</li>
+                            <li class="flex items-center text-slate-600 dark:text-slate-400"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary-500 mr-3 shrink-0"></i> NFC Reader Integration</li>
+                            <li class="flex items-center text-slate-600 dark:text-slate-400"><i data-lucide="check-circle-2" class="w-5 h-5 text-primary-500 mr-3 shrink-0"></i> Sensor & Automation Systems</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 bg-light-card dark:bg-dark-card border-y border-slate-200 dark:border-slate-800 transition-theme">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold inline-block relative">
+                        Proyek Unggulan
+                        <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-12 h-1 bg-primary-500 rounded"></div>
+                    </h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <!-- Project 1 -->
+                    <div class="group rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-light-bg dark:bg-dark-bg hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                        <div class="p-8">
+                            <div class="flex flex-col sm:flex-row justify-between sm:items-start gap-4 mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-bold mb-1 group-hover:text-primary-500 transition-colors">SIMATURKOM</h3>
+                                    <p class="text-primary-500 font-medium text-sm">Sistem Informasi Manajemen Infrastruktur Telekomunikasi</p>
+                                </div>
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-600 shrink-0">
+                                    Diskominfo Intern Project
+                                </span>
+                            </div>
+                            <p class="text-slate-600 dark:text-slate-400 mb-6 line-clamp-3">
+                                Aplikasi web sistem informasi manajemen untuk pengelolaan, pencatatan, dan monitoring data infrastruktur menara telekomunikasi wilayah secara terpusat.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 rounded bg-primary-500/10 border border-primary-500/20 text-primary-500 text-sm font-medium">Laravel</span>
+                                <span class="px-3 py-1 rounded bg-primary-500/10 border border-primary-500/20 text-primary-500 text-sm font-medium">MySQL</span>
+                                <span class="px-3 py-1 rounded bg-primary-500/10 border border-primary-500/20 text-primary-500 text-sm font-medium">Web Technologies</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="group rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-light-bg dark:bg-dark-bg hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                        <div class="p-8">
+                            <div class="flex flex-col sm:flex-row justify-between sm:items-start gap-4 mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-bold mb-1 group-hover:text-primary-500 transition-colors">AMOS</h3>
+                                    <p class="text-primary-500 font-medium text-sm">Sistem Informasi Manajemen Kepegawaian Berbasis Multiplatform</p>
+                                </div>
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-600 shrink-0">
+                                    Tugas Akhir Kuliah
+                                </span>
+                            </div>
+                            <p class="text-slate-600 dark:text-slate-400 mb-6 line-clamp-3">
+                                Sistem manajemen kepegawaian multiplatform terintegrasi dengan teknologi presensi fisik berbasis Kartu NFC/Name Tag pegawai untuk pencatatan kehadiran yang akurat dan otomatis.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 rounded bg-primary-500/10 border border-primary-500/20 text-primary-500 text-sm font-medium">Flutter</span>
+                                <span class="px-3 py-1 rounded bg-primary-500/10 border border-primary-500/20 text-primary-500 text-sm font-medium">Laravel API</span>
+                                <span class="px-3 py-1 rounded bg-primary-500/10 border border-primary-500/20 text-primary-500 text-sm font-medium">NFC Hardware</span>
+                                <span class="px-3 py-1 rounded bg-primary-500/10 border border-primary-500/20 text-primary-500 text-sm font-medium">Multiplatform</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience & Education Section -->
+        <section id="experience" class="py-20">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Education Block -->
+                <div class="mb-16">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-bold inline-block relative">
+                            Pendidikan
+                            <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-12 h-1 bg-primary-500 rounded"></div>
+                        </h2>
+                    </div>
+                    <div class="bg-light-card dark:bg-dark-card rounded-xl p-8 shadow-sm border border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                        <div class="space-y-2">
+                            <div class="flex items-center space-x-3">
+                                <div class="p-2 bg-primary-500/10 rounded-lg border border-primary-500/20 text-primary-500">
+                                    <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Politeknik Negeri Banjarmasin (POLIBAN)</h3>
+                            </div>
+                            <p class="text-lg font-medium text-slate-700 dark:text-slate-300 pl-11">
+                                Diploma — Teknik Informatika
+                            </p>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm pl-11 flex items-center gap-2">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
+                                    IPK 3.75 / 4.00
+                                </span>
+                            </p>
+                        </div>
+                        <span class="text-sm font-bold text-primary-500 bg-primary-500/10 border border-primary-500/20 px-4 py-1.5 rounded-full shrink-0">
+                            2023 – 2026
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Work Experience Block -->
+                <div>
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-bold inline-block relative">
+                            Pengalaman Kerja & Magang
+                            <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-12 h-1 bg-primary-500 rounded"></div>
+                        </h2>
+                    </div>
+                    
+                    <div class="relative border-l-2 border-slate-200 dark:border-slate-800 ml-3 md:ml-6 space-y-12">
+                        <!-- Timeline Item 1 -->
+                        <div class="relative pl-8 md:pl-12">
+                            <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-primary-500 ring-4 ring-light-bg dark:ring-dark-bg"></div>
+                            <div class="flex flex-col md:flex-row md:items-baseline md:justify-between mb-2">
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white">IT Support & Web Developer Intern</h3>
+                                <span class="text-sm font-bold text-primary-500 md:ml-4 bg-primary-500/10 border border-primary-500/20 px-3 py-1 rounded-full mt-2 md:mt-0 inline-block w-max">1 September – 4 Desember</span>
+                            </div>
+                            <h4 class="text-lg font-semibold text-slate-700 dark:text-slate-300 mb-4">Dinas Komunikasi dan Informatika (Diskominfo)</h4>
+                            <ul class="space-y-3 text-slate-600 dark:text-slate-400 list-none ml-0">
+                                <li class="flex items-start"><span class="text-primary-500 mr-2 mt-1">•</span> Melakukan pemeliharaan dan perbaikan infrastruktur perangkat keras (hardware) IT.</li>
+                                <li class="flex items-start"><span class="text-primary-500 mr-2 mt-1">•</span> Memberikan dukungan teknis operasional harian di lingkungan dinas.</li>
+                                <li class="flex items-start"><span class="text-primary-500 mr-2 mt-1">•</span> Berkontribusi dalam analisis dan pengembangan aplikasi web sistem informasi instansi.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Timeline Item 2 -->
+                        <div class="relative pl-8 md:pl-12">
+                            <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-300 dark:bg-slate-600 ring-4 ring-light-bg dark:ring-dark-bg"></div>
+                            <div class="flex flex-col md:flex-row md:items-baseline md:justify-between mb-2">
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Field Technical Specialist</h3>
+                                <span class="text-sm font-bold text-slate-700 dark:text-slate-300 md:ml-4 bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 px-3 py-1 rounded-full mt-2 md:mt-0 inline-block w-max">2 Bulan (Kerja Lapangan)</span>
+                            </div>
+                            <h4 class="text-lg font-semibold text-slate-700 dark:text-slate-300 mb-4">Vendor Penyedia Barang & Jasa Alat Berat</h4>
+                            <ul class="space-y-3 text-slate-600 dark:text-slate-400 list-none ml-0">
+                                <li class="flex items-start"><span class="text-slate-400 dark:text-slate-500 mr-2 mt-1">•</span> Mengani operasional teknis fisik dan pengerjaan lapangan secara langsung.</li>
+                                <li class="flex items-start"><span class="text-slate-400 dark:text-slate-500 mr-2 mt-1">•</span> Melakukan perakitan struktur rak besi, perawatan sistem AC, dan perbaikan unit excavator.</li>
+                                <li class="flex items-start"><span class="text-slate-400 dark:text-slate-500 mr-2 mt-1">•</span> Mengoperasikan peralatan teknis workshop (gerinda, alat ukur) dengan standar keselamatan kerja.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-light-card dark:bg-dark-card border-t border-slate-200 dark:border-slate-800 transition-theme">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold inline-block relative mb-6">
+                        Mari Terhubung
+                        <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-12 h-1 bg-primary-500 rounded"></div>
+                    </h2>
+                    <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+                        Tertarik untuk bekerja sama dalam proyek software, hardware, atau IoT? Hubungi saya melalui media di bawah ini.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Email -->
+                    <a href="mailto:andikaputra28153@gmail.com" class="flex flex-col items-center p-8 bg-light-bg dark:bg-dark-bg border border-slate-200 dark:border-slate-800 rounded-xl hover:border-primary-500 dark:hover:border-primary-500 hover:shadow-md transition-all group hover:-translate-y-1">
+                        <div class="w-14 h-14 bg-primary-500/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-primary-500 group-hover:text-white transition-colors border border-primary-500/20 group-hover:border-transparent">
+                            <i data-lucide="mail" class="w-7 h-7 text-primary-500 group-hover:text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">Email</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-center break-all text-sm font-medium">andikaputra28153@gmail.com</p>
+                    </a>
+                    <!-- LinkedIn -->
+                    <a href="https://linkedin.com/in/andika-putra-44446b241" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center p-8 bg-light-bg dark:bg-dark-bg border border-slate-200 dark:border-slate-800 rounded-xl hover:border-primary-500 dark:hover:border-primary-500 hover:shadow-md transition-all group hover:-translate-y-1">
+                        <div class="w-14 h-14 bg-primary-500/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-primary-500 group-hover:text-white transition-colors border border-primary-500/20 group-hover:border-transparent">
+                            <i data-lucide="linkedin" class="w-7 h-7 text-primary-500 group-hover:text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">LinkedIn</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-center break-all text-sm font-medium">andika putra</p>
+                    </a>
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/andikaputra.tech" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center p-8 bg-light-bg dark:bg-dark-bg border border-slate-200 dark:border-slate-800 rounded-xl hover:border-primary-500 dark:hover:border-primary-500 hover:shadow-md transition-all group hover:-translate-y-1">
+                        <div class="w-14 h-14 bg-primary-500/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-primary-500 group-hover:text-white transition-colors border border-primary-500/20 group-hover:border-transparent">
+                            <i data-lucide="instagram" class="w-7 h-7 text-primary-500 group-hover:text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">Instagram</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-center break-all text-sm font-medium">@andikaputra.tech</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-light-bg dark:bg-dark-bg border-t border-slate-200 dark:border-slate-800 py-8 transition-theme">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-slate-500 dark:text-slate-400 text-sm font-medium">
+                Copyright &copy; 2026 Aji Dwi Andika Putra.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Theme Toggle Logic
+        const themeToggleBtns = document.querySelectorAll('#theme-toggle, #theme-toggle-mobile');
+        const htmlElement = document.documentElement;
+
+        // Check for saved theme preference or OS preference
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+            htmlElement.classList.add('dark');
+        } else {
+            htmlElement.classList.remove('dark');
+        }
+
+        themeToggleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                htmlElement.classList.toggle('dark');
+                const isDark = htmlElement.classList.contains('dark');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            });
+        });
+
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = mobileMenuBtn.querySelector('.menu-icon');
+        const closeIcon = mobileMenuBtn.querySelector('.close-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            });
+        });
+    </script>
 </body>
 </html>
