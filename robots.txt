@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ajidwiandika.my.id/sitemap.xml
